@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: org.jenkins-ci.main:websocket-spi:2.387.1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../../../2_Tools/apache-maven-3.8.4/repository/org/jenkins-ci/main/websocket-spi/2.387.1/websocket-spi-2.387.1.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$PROJECT_DIR$/../../../2_Tools/apache-maven-3.8.4/repository/org/jenkins-ci/main/websocket-spi/2.387.1/websocket-spi-2.387.1-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/../../../2_Tools/apache-maven-3.8.4/repository/org/jenkins-ci/main/websocket-spi/2.387.1/websocket-spi-2.387.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

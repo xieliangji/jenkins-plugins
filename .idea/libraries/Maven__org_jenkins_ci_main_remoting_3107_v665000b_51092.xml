@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: org.jenkins-ci.main:remoting:3107.v665000b_51092">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../../../2_Tools/apache-maven-3.8.4/repository/org/jenkins-ci/main/remoting/3107.v665000b_51092/remoting-3107.v665000b_51092.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$PROJECT_DIR$/../../../2_Tools/apache-maven-3.8.4/repository/org/jenkins-ci/main/remoting/3107.v665000b_51092/remoting-3107.v665000b_51092-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/../../../2_Tools/apache-maven-3.8.4/repository/org/jenkins-ci/main/remoting/3107.v665000b_51092/remoting-3107.v665000b_51092-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

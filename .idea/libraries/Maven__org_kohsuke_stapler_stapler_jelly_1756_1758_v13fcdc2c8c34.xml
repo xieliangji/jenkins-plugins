@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: org.kohsuke.stapler:stapler-jelly:1756.1758.v13fcdc2c8c34">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../../../2_Tools/apache-maven-3.8.4/repository/org/kohsuke/stapler/stapler-jelly/1756.1758.v13fcdc2c8c34/stapler-jelly-1756.1758.v13fcdc2c8c34.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$PROJECT_DIR$/../../../2_Tools/apache-maven-3.8.4/repository/org/kohsuke/stapler/stapler-jelly/1756.1758.v13fcdc2c8c34/stapler-jelly-1756.1758.v13fcdc2c8c34-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/../../../2_Tools/apache-maven-3.8.4/repository/org/kohsuke/stapler/stapler-jelly/1756.1758.v13fcdc2c8c34/stapler-jelly-1756.1758.v13fcdc2c8c34-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
