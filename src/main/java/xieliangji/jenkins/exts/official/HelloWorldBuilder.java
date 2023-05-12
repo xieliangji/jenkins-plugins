@@ -70,13 +70,13 @@ public class HelloWorldBuilder extends Builder implements SimpleBuildStep {
 
         public FormValidation doCheckMaster(@QueryParameter String value, @QueryParameter boolean useChinese) {
             if (StringUtils.isBlank(value)) {
-                return FormValidation.error("主人不能为空");
+                return FormValidation.error(Messages.HelloWorldBuilderMissingMaster());
             }
             if (StringUtils.length(value) < 4) {
-                return FormValidation.warning("主人长度太短");
+                return FormValidation.warning(Messages.HelloWorldBuilderTooShort());
             }
-            if (StringUtils.equals(value, "黎思静")) {
-                return FormValidation.warning("白月光");
+            if (StringUtils.equals(value, "黎思静啊")) {
+                return FormValidation.warning(Messages.HelloWorldBuilderReallyChinese());
             }
             return FormValidation.ok();
         }
@@ -89,7 +89,7 @@ public class HelloWorldBuilder extends Builder implements SimpleBuildStep {
         @NonNull
         @Override
         public String getDisplayName() {
-            return "主人";
+            return Messages.HelloWorldBuilderDisplayName();
         }
     }
 }

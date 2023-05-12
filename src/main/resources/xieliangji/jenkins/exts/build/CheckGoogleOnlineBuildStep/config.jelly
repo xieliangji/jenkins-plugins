@@ -1,11 +1,11 @@
 <?jelly escape-by-default='true'?>
 <j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler"
          xmlns:d="jelly:define" xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form">
-    <f:entry title="${%Master}" field="master">
+    <f:entry title="谷歌URL" field="googleUrl">
         <f:textbox />
     </f:entry>
     <f:advanced>
-        <f:entry title="${%Chinese}" field="useChinese" description="${%ChineseDesc}">
+        <f:entry title="是否ncr" field="withNCR" description="是否在谷歌url后加上/ncr">
             <f:checkbox />
         </f:entry>
     </f:advanced>
