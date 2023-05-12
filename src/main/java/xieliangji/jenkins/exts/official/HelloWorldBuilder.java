@@ -22,6 +22,9 @@ import java.io.IOException;
 
 /**
  * 官网的HelloWorldBuilder
+ * 1. Java代码中的国际化
+ * 2. *.jelly的国际化
+ * 3. 国际化进阶
  */
 public class HelloWorldBuilder extends Builder implements SimpleBuildStep {
 
