@@ -26,7 +26,7 @@
     <version>1.0</version>
     <packaging>hpi</packaging>
 
-    <name>collection of jenkins extensions</name>
+    <name>谢良基的自定义Jenkins扩展集</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

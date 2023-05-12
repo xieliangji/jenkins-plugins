@@ -22,6 +22,7 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.nio.charset.StandardCharsets;
+import java.time.Duration;
 import java.util.Objects;
 import java.util.regex.Pattern;
 
@@ -63,29 +64,35 @@ public class CheckGoogleOnlineBuildStep extends Builder implements SimpleBuildSt
             googleUrl = googleUrl.endsWith("/") ? googleUrl.substring(0, googleUrl.length() - 1) : googleUrl;
             googleUrl = googleUrl.concat("/ncr");
         }
-        HttpClient httpClient = HttpClient.newHttpClient();
-        HttpRequest httpRequest = HttpRequest.newBuilder().GET().uri(URI.create(googleUrl)).build();
-        HttpResponse<String> httpResponse =
-                httpClient.send(httpRequest, HttpResponse.BodyHandlers.ofString(StandardCharsets.UTF_8));
-        if (httpResponse.statusCode() == 200) {
-            run.addAction(new CheckGoogleOnlineBuildStepRunAction(httpResponse.body()));
-            listener.getLogger().println("check internet access successfully, build go on...");
-        } else {
-            run.addAction(new CheckGoogleOnlineBuildStepRunAction("Sorry, the internet cannot access"));
-            listener.getLogger().println("check internet access failed. build stop right now.");
-            Executor executor = run.getExecutor();
-            if (Objects.nonNull(executor)) {
-                org.kohsuke.stapler.HttpResponse resp = executor.doStop();
-                listener.getLogger().printf("stop executor: %s", resp.toString());
+        try {
+            HttpClient httpClient = HttpClient.newBuilder().connectTimeout(Duration.ofSeconds(30)).build();
+            HttpRequest httpRequest = HttpRequest.newBuilder().GET().uri(URI.create(googleUrl)).build();
+            HttpResponse<String> httpResponse =
+                    httpClient.send(httpRequest, HttpResponse.BodyHandlers.ofString(StandardCharsets.UTF_8));
+            if (httpResponse.statusCode() == 200) {
+                run.addAction(new CheckGoogleOnlineBuildStepRunAction(httpResponse.body()));
+                listener.getLogger().println("check internet access successfully, build go on...");
+            } else {
+                run.addAction(new CheckGoogleOnlineBuildStepRunAction("Sorry, the internet cannot access"));
+                listener.getLogger().println("check internet access failed. build stop right now.");
+                Executor executor = run.getExecutor();
+                if (Objects.nonNull(executor)) {
+                    org.kohsuke.stapler.HttpResponse resp = executor.doStop();
+                    listener.getLogger().printf("stop executor: %s", resp.toString());
+                }
             }
+        } catch (Exception ex) {
+            run.addAction(new CheckGoogleOnlineBuildStepRunAction(ex.getMessage()));
+            listener.getLogger().printf("check internet access failed: %s\n", ex.getMessage());
         }
+
     }
 
     @Symbol("测试国际网络能否访问")
     @Extension
     public static final class CheckGoogleOnlineBuildStepDescriptor extends BuildStepDescriptor<Builder> {
 
-        public FormValidation checkForm(@QueryParameter String googleUrl, @QueryParameter boolean withNCR) {
+        public FormValidation checkGoogleUrl(@QueryParameter String googleUrl, @QueryParameter boolean withNCR) {
             Pattern urlPattern = Pattern.compile("^https?://([\\w-]+\\.)+[\\w-]+(/[\\w-./?%&=]*)?");
             if (!urlPattern.matcher(googleUrl).matches()) {
                 return FormValidation.error("不合规范的url");
